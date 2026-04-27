@@ -1,4 +1,5 @@
 import { useEffect, useRef } from "react";
+import type LenisType from "lenis";
 
 /**
  * Smooth scrolling using Lenis. Respects prefers-reduced-motion.
@@ -13,7 +14,7 @@ export function useLenis() {
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (reduceMotion) return;
 
-    let lenis: any;
+    let lenis: LenisType | undefined;
     let rafId: number;
 
     (async () => {
@@ -26,7 +27,7 @@ export function useLenis() {
       });
 
       const raf = (time: number) => {
-        lenis.raf(time);
+        lenis?.raf(time);
         rafId = requestAnimationFrame(raf);
       };
       rafId = requestAnimationFrame(raf);
