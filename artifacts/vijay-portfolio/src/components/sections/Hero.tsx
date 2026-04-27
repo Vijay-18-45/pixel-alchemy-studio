@@ -46,7 +46,7 @@ const Hero = () => {
               top: `${(i * 53) % 100}%`,
               left: `${(i * 71) % 100}%`,
               boxShadow: "0 0 10px hsl(var(--primary))",
-              animation: `float ${6 + (i % 5)}s ease-in-out ${i * 0.3}s infinite`,
+              animation: `float ${1.5 + (i % 5) * 0.4}s ease-in-out ${i * 0.1}s infinite`,
             }}
           />
         ))}
