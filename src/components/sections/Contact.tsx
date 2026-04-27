@@ -150,7 +150,7 @@ const Contact = () => {
               <button
                 type="submit"
                 disabled={submitting}
-                className="group inline-flex flex-1 items-center justify-center gap-2 rounded-full bg-gradient-primary px-7 py-3.5 text-sm font-medium text-primary-foreground shadow-glow-primary transition-transform hover:scale-[1.02] disabled:opacity-60"
+                className="btn-premium btn-lg flex-1 disabled:opacity-60 disabled:cursor-not-allowed"
               >
                 <PaperPlaneTilt size={18} weight="fill" />
                 {submitting ? "Sending..." : "Send Message"}
@@ -159,7 +159,7 @@ const Contact = () => {
                 href="https://wa.me/918367592895"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 rounded-full glass border-glow px-7 py-3.5 text-sm font-medium text-foreground hover:bg-white/5 transition-all"
+                className="btn-ghost-premium btn-lg"
               >
                 <WhatsappLogo size={18} weight="fill" className="text-secondary" />
                 WhatsApp DM Us
