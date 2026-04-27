@@ -76,7 +76,7 @@ const Hero = () => {
               e.preventDefault();
               document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
             }}
-            className="hero-cta group inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-full bg-gradient-primary px-7 py-3.5 text-sm md:text-base font-medium text-primary-foreground shadow-glow-primary transition-transform hover:scale-105"
+            className="hero-cta btn-premium btn-lg w-full sm:w-auto"
           >
             <RocketLaunch size={20} weight="fill" />
             Get Your Website
@@ -85,7 +85,7 @@ const Hero = () => {
             href="https://wa.me/918367592895"
             target="_blank"
             rel="noopener noreferrer"
-            className="hero-cta group inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-full glass border-glow px-7 py-3.5 text-sm md:text-base font-medium text-foreground hover:bg-white/5 transition-all"
+            className="hero-cta btn-ghost-premium btn-lg w-full sm:w-auto"
           >
             <ChatCircleDots size={20} weight="fill" />
             DM Us

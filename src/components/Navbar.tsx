@@ -75,7 +75,7 @@ const Navbar = () => {
               e.preventDefault();
               handleClick("#contact");
             }}
-            className="hidden md:inline-flex items-center gap-2 rounded-full bg-gradient-primary px-5 py-2 text-sm font-medium text-primary-foreground shadow-glow-primary hover:scale-105 transition-transform"
+            className="hidden md:inline-flex btn-premium btn-sm"
           >
             Hire Me
           </a>
@@ -132,7 +132,7 @@ const Navbar = () => {
               e.preventDefault();
               handleClick("#contact");
             }}
-            className="mt-4 inline-flex items-center gap-2 rounded-full bg-gradient-primary px-7 py-3 text-base font-medium text-primary-foreground shadow-glow-primary"
+            className="mt-4 btn-premium btn-lg"
           >
             Hire Me
           </a>
