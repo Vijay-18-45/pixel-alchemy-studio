@@ -28,13 +28,19 @@ const Projects = () => {
       const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
       if (reduce) return;
 
+      // Project cards fly in from random angles and merge into the grid
       gsap.from(".project-card", {
-        y: 60,
+        x: (i) => [-320, 320, -240, 240, -180, 180][i % 6],
+        y: (i) => [180, -180, 220, -160, 160, -200][i % 6],
+        rotate: (i) => [-12, 12, -8, 8, -10, 10][i % 6],
+        scale: 0.5,
         opacity: 0,
-        duration: 0.8,
-        stagger: 0.1,
-        ease: "power3.out",
+        filter: "blur(14px)",
+        duration: 2.4,
+        stagger: { each: 0.14, from: "center" },
+        ease: "expo.out",
         scrollTrigger: { trigger: root.current, start: "top 70%" },
+        clearProps: "transform,filter",
       });
     }, root);
     return () => ctx.revert();

@@ -46,10 +46,49 @@ const Counter = ({ to, suffix }: { to: number; suffix: string }) => {
 };
 
 const WhyWebsite = () => {
+  const root = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      if (reduce) return;
+
+      // Heading falls from above with a slight rotation
+      gsap.from(".why-heading > *", {
+        y: -120,
+        scale: 0.85,
+        rotate: -4,
+        opacity: 0,
+        filter: "blur(12px)",
+        duration: 2.0,
+        stagger: 0.15,
+        ease: "expo.out",
+        scrollTrigger: { trigger: root.current, start: "top 75%" },
+        clearProps: "transform,filter",
+      });
+
+      // Stat cards fly in from alternating directions and converge
+      gsap.from(".why-stat", {
+        x: (i) => [-280, 280, -200, 200, 0][i % 5],
+        y: (i) => [120, -120, 160, -160, 200][i % 5],
+        rotate: (i) => [-10, 10, -6, 6, 0][i % 5],
+        scale: 0.55,
+        opacity: 0,
+        filter: "blur(14px)",
+        duration: 2.3,
+        stagger: { each: 0.13, from: "center" },
+        ease: "expo.out",
+        scrollTrigger: { trigger: ".why-grid", start: "top 80%" },
+        clearProps: "transform,filter",
+      });
+    }, root);
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <section className="relative py-24 md:py-32">
+    <section ref={root} className="relative py-24 md:py-32">
       <div className="container mx-auto px-6">
-        <div className="text-center max-w-2xl mx-auto mb-14">
+        <div className="why-heading text-center max-w-2xl mx-auto mb-14">
           <span className="inline-block text-xs font-mono uppercase tracking-[0.3em] text-primary/80 mb-4">
             Why Now
           </span>
@@ -63,11 +102,11 @@ const WhyWebsite = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+        <div className="why-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
           {stats.map(({ icon: Icon, num, suffix, label, desc }) => (
             <div
               key={label}
-              className="glass border-glow rounded-3xl p-6 flex flex-col items-start gap-3 hover:-translate-y-1 transition-transform duration-300"
+              className="why-stat glass border-glow rounded-3xl p-6 flex flex-col items-start gap-3 hover:-translate-y-1 transition-transform duration-300"
             >
               <div className="inline-flex items-center justify-center h-11 w-11 rounded-2xl bg-gradient-primary text-primary-foreground shadow-glow-soft">
                 <Icon size={20} weight="duotone" />

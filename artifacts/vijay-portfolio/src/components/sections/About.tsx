@@ -34,28 +34,46 @@ const About = () => {
       const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
       if (reduce) return;
 
+      const trigger = { trigger: root.current, start: "top 70%" };
+
+      // Portrait spirals in from the far left
       gsap.from(".about-img", {
-        x: -60,
+        x: -400,
+        y: 80,
+        scale: 0.5,
+        rotate: -12,
         opacity: 0,
-        duration: 1,
-        ease: "power3.out",
-        scrollTrigger: { trigger: root.current, start: "top 75%" },
+        filter: "blur(16px)",
+        duration: 2.6,
+        ease: "expo.out",
+        scrollTrigger: trigger,
+        clearProps: "filter",
       });
+
+      // Heading + paragraphs fly in from the right and converge
       gsap.from(".about-content > *", {
-        y: 30,
+        x: (i) => (i % 2 === 0 ? 320 : 220),
+        y: (i) => (i % 2 === 0 ? -60 : 60),
+        scale: 0.85,
         opacity: 0,
-        duration: 0.7,
-        stagger: 0.1,
-        ease: "power3.out",
-        scrollTrigger: { trigger: root.current, start: "top 75%" },
+        filter: "blur(12px)",
+        duration: 2.4,
+        stagger: 0.18,
+        ease: "expo.out",
+        scrollTrigger: trigger,
+        clearProps: "transform,filter",
       });
+
+      // Offering chips burst from the center outward
       gsap.from(".offering-item", {
-        scale: 0.8,
+        scale: 0,
+        rotate: (i) => (i % 2 === 0 ? -25 : 25),
         opacity: 0,
-        duration: 0.5,
-        stagger: 0.06,
-        ease: "back.out(1.6)",
+        duration: 1.4,
+        stagger: { each: 0.08, from: "center" },
+        ease: "back.out(2)",
         scrollTrigger: { trigger: ".offerings-grid", start: "top 85%" },
+        clearProps: "transform",
       });
     }, root);
     return () => ctx.revert();
