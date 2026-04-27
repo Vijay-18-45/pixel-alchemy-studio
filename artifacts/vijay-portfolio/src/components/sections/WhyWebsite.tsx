@@ -53,33 +53,27 @@ const WhyWebsite = () => {
       const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
       if (reduce) return;
 
-      // Heading falls from above with a slight rotation
+      // Heading falls from above
       gsap.from(".why-heading > *", {
-        y: -120,
-        scale: 0.85,
-        rotate: -4,
+        y: -50,
         opacity: 0,
-        filter: "blur(12px)",
-        duration: 2.0,
-        stagger: 0.15,
-        ease: "expo.out",
+        duration: 1.0,
+        stagger: 0.12,
+        ease: "power3.out",
         scrollTrigger: { trigger: root.current, start: "top 75%" },
-        clearProps: "transform,filter",
+        clearProps: "transform,opacity",
       });
 
-      // Stat cards fly in from alternating directions and converge
+      // Stat cards fade-up and converge from center
       gsap.from(".why-stat", {
-        x: (i) => [-280, 280, -200, 200, 0][i % 5],
-        y: (i) => [120, -120, 160, -160, 200][i % 5],
-        rotate: (i) => [-10, 10, -6, 6, 0][i % 5],
-        scale: 0.55,
+        y: 60,
+        scale: 0.9,
         opacity: 0,
-        filter: "blur(14px)",
-        duration: 2.3,
-        stagger: { each: 0.13, from: "center" },
-        ease: "expo.out",
+        duration: 1.2,
+        stagger: { each: 0.1, from: "center" },
+        ease: "power3.out",
         scrollTrigger: { trigger: ".why-grid", start: "top 80%" },
-        clearProps: "transform,filter",
+        clearProps: "transform,opacity",
       });
     }, root);
     return () => ctx.revert();

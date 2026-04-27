@@ -23,34 +23,27 @@ const Contact = () => {
       const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
       if (reduce) return;
 
-      // Heading column flies in from the left with rotation
+      // Heading column slides in from the left
       gsap.from(".contact-heading > *", {
-        x: -260,
-        y: (i) => (i % 2 === 0 ? -60 : 60),
-        rotate: -6,
-        scale: 0.85,
+        x: -80,
+        y: 30,
         opacity: 0,
-        filter: "blur(12px)",
-        duration: 2.2,
-        stagger: 0.15,
-        ease: "expo.out",
-        scrollTrigger: { trigger: root.current, start: "top 70%" },
-        clearProps: "transform,filter",
+        duration: 1.0,
+        stagger: 0.12,
+        ease: "power3.out",
+        scrollTrigger: { trigger: root.current, start: "top 75%" },
+        clearProps: "transform,opacity",
       });
 
-      // Form fields cascade in from the right and converge
+      // Form fields cascade in from the right
       gsap.from(".contact-input", {
-        x: 240,
-        y: (i) => (i % 2 === 0 ? -40 : 40),
-        scale: 0.85,
-        rotate: 4,
+        x: 60,
         opacity: 0,
-        filter: "blur(10px)",
-        duration: 1.9,
-        stagger: 0.12,
-        ease: "expo.out",
+        duration: 0.9,
+        stagger: 0.1,
+        ease: "power3.out",
         scrollTrigger: { trigger: ".contact-form", start: "top 80%" },
-        clearProps: "transform,filter",
+        clearProps: "transform,opacity",
       });
     }, root);
     return () => ctx.revert();

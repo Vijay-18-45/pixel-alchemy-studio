@@ -34,46 +34,40 @@ const About = () => {
       const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
       if (reduce) return;
 
-      const trigger = { trigger: root.current, start: "top 70%" };
+      const trigger = { trigger: root.current, start: "top 75%" };
 
-      // Portrait spirals in from the far left
+      // Portrait slides in from the left
       gsap.from(".about-img", {
-        x: -400,
-        y: 80,
-        scale: 0.5,
-        rotate: -12,
+        x: -120,
+        scale: 0.9,
         opacity: 0,
-        filter: "blur(16px)",
-        duration: 2.6,
-        ease: "expo.out",
+        duration: 1.4,
+        ease: "power3.out",
         scrollTrigger: trigger,
-        clearProps: "filter",
+        clearProps: "transform,opacity",
       });
 
-      // Heading + paragraphs fly in from the right and converge
+      // Heading + paragraphs cascade in from the right
       gsap.from(".about-content > *", {
-        x: (i) => (i % 2 === 0 ? 320 : 220),
-        y: (i) => (i % 2 === 0 ? -60 : 60),
-        scale: 0.85,
+        x: 80,
+        y: 30,
         opacity: 0,
-        filter: "blur(12px)",
-        duration: 2.4,
-        stagger: 0.18,
-        ease: "expo.out",
+        duration: 1.0,
+        stagger: 0.12,
+        ease: "power3.out",
         scrollTrigger: trigger,
-        clearProps: "transform,filter",
+        clearProps: "transform,opacity",
       });
 
       // Offering chips burst from the center outward
       gsap.from(".offering-item", {
-        scale: 0,
-        rotate: (i) => (i % 2 === 0 ? -25 : 25),
+        scale: 0.6,
         opacity: 0,
-        duration: 1.4,
-        stagger: { each: 0.08, from: "center" },
-        ease: "back.out(2)",
+        duration: 0.8,
+        stagger: { each: 0.06, from: "center" },
+        ease: "back.out(1.8)",
         scrollTrigger: { trigger: ".offerings-grid", start: "top 85%" },
-        clearProps: "transform",
+        clearProps: "transform,opacity",
       });
     }, root);
     return () => ctx.revert();

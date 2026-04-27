@@ -70,19 +70,16 @@ const Projects = () => {
       const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
       if (reduce) return;
 
-      // Project cards fly in from random angles and merge into the grid
+      // Project cards fade-up and converge into the grid
       gsap.from(".project-card", {
-        x: (i) => [-320, 320, -240, 240, -180, 180][i % 6],
-        y: (i) => [180, -180, 220, -160, 160, -200][i % 6],
-        rotate: (i) => [-12, 12, -8, 8, -10, 10][i % 6],
-        scale: 0.5,
+        y: 80,
+        scale: 0.92,
         opacity: 0,
-        filter: "blur(14px)",
-        duration: 2.4,
-        stagger: { each: 0.14, from: "center" },
-        ease: "expo.out",
-        scrollTrigger: { trigger: root.current, start: "top 70%" },
-        clearProps: "transform,filter",
+        duration: 1.4,
+        stagger: { each: 0.12, from: "center" },
+        ease: "power3.out",
+        scrollTrigger: { trigger: root.current, start: "top 80%" },
+        clearProps: "transform,opacity",
       });
     }, root);
     return () => ctx.revert();

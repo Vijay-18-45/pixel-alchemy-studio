@@ -34,19 +34,16 @@ const Services = () => {
       const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
       if (reduce) return;
 
-      // Service cards spiral in from alternating angles and converge
+      // Service cards fade-up and converge from the center
       gsap.from(".service-card", {
-        x: (i) => (i % 2 === 0 ? -260 : 260),
-        y: (i) => (i % 3 === 0 ? -160 : 160),
-        rotate: (i) => (i % 2 === 0 ? -10 : 10),
-        scale: 0.55,
+        y: 70,
+        scale: 0.9,
         opacity: 0,
-        filter: "blur(14px)",
-        duration: 2.2,
-        stagger: { each: 0.12, from: "center" },
-        ease: "expo.out",
-        scrollTrigger: { trigger: root.current, start: "top 70%" },
-        clearProps: "transform,filter",
+        duration: 1.3,
+        stagger: { each: 0.1, from: "center" },
+        ease: "power3.out",
+        scrollTrigger: { trigger: root.current, start: "top 80%" },
+        clearProps: "transform,opacity",
       });
     }, root);
     return () => ctx.revert();
