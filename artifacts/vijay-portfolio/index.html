@@ -7,14 +7,73 @@
     <meta name="description" content="Vijay Bhemavarapu builds premium, high-converting websites for businesses, brands, startups & local companies. React, Tailwind, GSAP." />
     <meta name="author" content="Vijay Bhemavarapu" />
     <meta name="theme-color" content="#0a0118" />
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="alternate icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" href="/favicon.svg" />
+
+    <!-- Fonts: preconnect early, then load non-blocking via media swap so first paint isn't delayed -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link
+      rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap"
+      media="print"
+      onload="this.media='all'"
+    />
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap"
+      />
+    </noscript>
 
     <meta property="og:title" content="Vijay Bhemavarapu — Premium Websites for Businesses" />
     <meta property="og:description" content="High-converting websites for businesses, brands, and local companies." />
     <meta property="og:type" content="website" />
+    <meta property="og:image" content="/opengraph.jpg" />
     <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- Inline splash so the user never sees a white flash before React mounts -->
+    <style>
+      html, body { background: #0a0118; color: #f5f3ff; margin: 0; }
+      body {
+        font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+        -webkit-font-smoothing: antialiased;
+        text-rendering: optimizeLegibility;
+      }
+      #root:empty::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        background:
+          radial-gradient(60% 50% at 50% 40%, rgba(132, 90, 245, 0.18), transparent 70%),
+          radial-gradient(40% 40% at 80% 80%, rgba(80, 120, 255, 0.12), transparent 70%),
+          #0a0118;
+      }
+      #root:empty::after {
+        content: "";
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        width: 36px;
+        height: 36px;
+        margin: -18px 0 0 -18px;
+        border-radius: 50%;
+        border: 2px solid rgba(180, 160, 255, 0.18);
+        border-top-color: rgba(180, 160, 255, 0.95);
+        animation: spin 0.8s linear infinite;
+      }
+      @keyframes spin { to { transform: rotate(360deg); } }
+      @media (prefers-reduced-motion: reduce) {
+        #root:empty::after { animation: none; }
+      }
+    </style>
   </head>
 
   <body>

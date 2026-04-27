@@ -62,6 +62,20 @@ export default defineConfig({
   build: {
     outDir: path.resolve(import.meta.dirname, "dist/public"),
     emptyOutDir: true,
+    cssCodeSplit: true,
+    sourcemap: false,
+    chunkSizeWarningLimit: 700,
+    rollupOptions: {
+      output: {
+        // Split heavy libs into their own cacheable chunks so the initial
+        // bundle stays small and React can paint sooner on first visit.
+        manualChunks: {
+          "react-vendor": ["react", "react-dom"],
+          gsap: ["gsap"],
+          icons: ["@phosphor-icons/react"],
+        },
+      },
+    },
   },
   server: {
     port,

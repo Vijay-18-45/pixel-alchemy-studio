@@ -3,11 +3,11 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ArrowUpRight, Barbell, Tooth, ForkKnife, Buildings, Scissors, Rocket } from "@phosphor-icons/react";
 import gym from "@/assets/project-gym.jpg";
-import dental from "@/assets/project-dental.png";
+import dental from "@/assets/project-dental.jpg";
 import restaurant from "@/assets/project-restaurant.jpg";
-import realestate from "@/assets/project-realestate.png";
+import realestate from "@/assets/project-realestate.jpg";
 import salon from "@/assets/project-salon.jpg";
-import techstartup from "@/assets/project-techstartup.png";
+import techstartup from "@/assets/project-techstartup.jpg";
 
 gsap.registerPlugin(ScrollTrigger);
 
