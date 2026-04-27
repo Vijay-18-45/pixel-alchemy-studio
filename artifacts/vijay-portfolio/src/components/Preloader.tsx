@@ -10,7 +10,7 @@ const Preloader = ({ onComplete }: Props) => {
 
   useEffect(() => {
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const duration = reduceMotion ? 200 : 500;
+    const duration = reduceMotion ? 100 : 200;
     const start = performance.now();
 
     let raf: number;
