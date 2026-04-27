@@ -10,86 +10,163 @@ const Hero = () => {
       const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
       if (reduce) return;
 
-      const tl = gsap.timeline({ defaults: { ease: "power4.out" } });
-
-      // Cinematic entry: every element flies in from a different angle
-      // and converges to its final position.
-      tl.from(".hero-eyebrow", {
-        y: -120,
-        scale: 0.6,
+      // Background orbs sweep in from far edges and settle behind everything
+      gsap.from(".orb-1", {
+        x: -600,
+        y: -400,
+        scale: 0.2,
         opacity: 0,
-        rotate: -8,
-        duration: 2.2,
+        duration: 3.2,
         ease: "expo.out",
+      });
+      gsap.from(".orb-2", {
+        x: 600,
+        y: 400,
+        scale: 0.2,
+        opacity: 0,
+        duration: 3.4,
+        ease: "expo.out",
+      });
+      gsap.from(".orb-3", {
+        scale: 0.1,
+        opacity: 0,
+        duration: 3.6,
+        ease: "expo.out",
+      });
+
+      // Particles burst in from a center implosion
+      gsap.from(".hero-particle", {
+        x: 0,
+        y: 0,
+        scale: 0,
+        opacity: 0,
+        duration: 2.4,
+        stagger: { each: 0.08, from: "random" },
+        ease: "power3.out",
+        delay: 0.4,
+      });
+
+      const tl = gsap.timeline({ defaults: { ease: "expo.out" } });
+
+      // Cinematic entry — every element flies in from a distinct angle
+      // and converges to its final composition. Longer, slower, grander.
+      tl.from(".hero-eyebrow", {
+        y: -200,
+        scale: 0.4,
+        opacity: 0,
+        rotate: -14,
+        filter: "blur(12px)",
+        duration: 3.0,
       })
         .from(
           ".hero-title-line:nth-child(1)",
           {
-            x: -300,
-            y: 40,
+            x: -700,
+            y: 120,
             opacity: 0,
-            scale: 1.15,
-            rotate: -4,
-            filter: "blur(14px)",
-            duration: 2.8,
-            ease: "expo.out",
+            scale: 1.4,
+            rotate: -10,
+            skewX: 8,
+            filter: "blur(24px)",
+            duration: 4.2,
           },
-          "-=1.4",
+          "-=2.2",
         )
         .from(
           ".hero-title-line:nth-child(2)",
           {
-            x: 300,
-            y: -40,
+            x: 700,
+            y: -120,
             opacity: 0,
-            scale: 1.15,
-            rotate: 4,
-            filter: "blur(14px)",
-            duration: 2.8,
-            ease: "expo.out",
+            scale: 1.4,
+            rotate: 10,
+            skewX: -8,
+            filter: "blur(24px)",
+            duration: 4.2,
           },
-          "-=2.4",
+          "-=3.8",
         )
         .from(
           ".hero-sub",
           {
-            y: 80,
-            scale: 0.92,
+            y: 160,
+            scale: 0.85,
             opacity: 0,
-            filter: "blur(8px)",
-            duration: 2.2,
-            ease: "expo.out",
+            filter: "blur(14px)",
+            duration: 3.4,
           },
-          "-=1.8",
+          "-=2.6",
         )
         .from(
           ".hero-cta",
           {
-            y: 60,
-            scale: 0.7,
+            y: (i) => (i === 0 ? 180 : -180),
+            x: (i) => (i === 0 ? -280 : 280),
+            scale: 0.4,
+            rotate: (i) => (i === 0 ? -18 : 18),
             opacity: 0,
-            duration: 1.8,
-            stagger: { each: 0.24, from: "center" },
-            ease: "back.out(1.8)",
+            filter: "blur(10px)",
+            duration: 2.8,
+            stagger: { each: 0.18, from: "center" },
+            ease: "back.out(1.6)",
           },
-          "-=1.6",
+          "-=2.2",
         )
         .from(
           ".hero-stat",
           {
-            y: 80,
-            scale: 0.6,
+            y: 220,
+            scale: 0.4,
+            rotate: (i) => (i - 1) * 12,
             opacity: 0,
-            duration: 1.8,
-            stagger: { each: 0.24, from: "center" },
-            ease: "back.out(1.6)",
+            filter: "blur(10px)",
+            duration: 2.6,
+            stagger: { each: 0.3, from: "center" },
+            ease: "back.out(1.5)",
           },
-          "-=1.2",
+          "-=1.8",
+        )
+        // Final "settle" pulse — a subtle breath after everything converges
+        .to(
+          ".hero-eyebrow, .hero-title-line, .hero-sub, .hero-cta, .hero-stat",
+          {
+            scale: 1.012,
+            duration: 0.6,
+            yoyo: true,
+            repeat: 1,
+            ease: "sine.inOut",
+          },
+          "-=0.4",
         );
 
-      gsap.to(".orb-1", { y: -30, x: 20, duration: 8, repeat: -1, yoyo: true, ease: "sine.inOut" });
-      gsap.to(".orb-2", { y: 25, x: -15, duration: 10, repeat: -1, yoyo: true, ease: "sine.inOut" });
-      gsap.to(".orb-3", { y: -20, x: -25, duration: 12, repeat: -1, yoyo: true, ease: "sine.inOut" });
+      // Ambient float loop — kicks in after the entry animation completes
+      gsap.to(".orb-1", {
+        y: -30,
+        x: 20,
+        duration: 8,
+        repeat: -1,
+        yoyo: true,
+        ease: "sine.inOut",
+        delay: 4,
+      });
+      gsap.to(".orb-2", {
+        y: 25,
+        x: -15,
+        duration: 10,
+        repeat: -1,
+        yoyo: true,
+        ease: "sine.inOut",
+        delay: 4,
+      });
+      gsap.to(".orb-3", {
+        y: -20,
+        x: -25,
+        duration: 12,
+        repeat: -1,
+        yoyo: true,
+        ease: "sine.inOut",
+        delay: 4,
+      });
     }, root);
     return () => ctx.revert();
   }, []);
@@ -111,7 +188,7 @@ const Hero = () => {
         {Array.from({ length: 12 }).map((_, i) => (
           <span
             key={i}
-            className="absolute block h-1 w-1 rounded-full bg-primary/60"
+            className="hero-particle absolute block h-1 w-1 rounded-full bg-primary/60"
             style={{
               top: `${(i * 53) % 100}%`,
               left: `${(i * 71) % 100}%`,
