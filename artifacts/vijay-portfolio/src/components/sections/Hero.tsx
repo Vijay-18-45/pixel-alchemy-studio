@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
-import { RocketLaunch, ChatCircleDots } from "@phosphor-icons/react";
+import { RocketLaunch, WhatsappLogo, ArrowRight } from "@phosphor-icons/react";
 
 const Hero = () => {
   const root = useRef<HTMLDivElement>(null);
@@ -213,26 +213,27 @@ const Hero = () => {
           convert visitors into customers.
         </p>
 
-        <div className="mt-6 flex flex-col sm:flex-row items-center justify-center gap-5">
+        <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3">
           <a
             href="#contact"
             onClick={(e) => {
               e.preventDefault();
               document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
             }}
-            className="hero-cta btn-premium btn-xl w-full sm:w-auto"
+            className="hero-cta btn-premium btn-lg"
           >
-            <RocketLaunch size={24} weight="fill" />
+            <RocketLaunch size={17} weight="fill" />
             Get Your Website
+            <ArrowRight size={16} weight="bold" className="btn-arrow" />
           </a>
           <a
             href="https://wa.me/918367592895"
             target="_blank"
             rel="noopener noreferrer"
-            className="hero-cta btn-ghost-premium btn-xl w-full sm:w-auto"
+            className="hero-cta btn-ghost-premium btn-lg"
           >
-            <ChatCircleDots size={24} weight="fill" />
-            DM Us
+            <WhatsappLogo size={17} weight="fill" className="text-[#25D366]" />
+            DM on WhatsApp
           </a>
         </div>
 

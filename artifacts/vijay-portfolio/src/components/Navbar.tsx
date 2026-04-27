@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { List, X } from "@phosphor-icons/react";
+import { List, X, ArrowRight } from "@phosphor-icons/react";
 
 const links = [
   { href: "#home", label: "Home" },
@@ -78,6 +78,7 @@ const Navbar = () => {
             className="hidden md:inline-flex btn-premium btn-sm"
           >
             Hire Me
+            <ArrowRight size={14} weight="bold" className="btn-arrow" />
           </a>
 
           <button

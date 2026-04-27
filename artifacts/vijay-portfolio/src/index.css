@@ -187,187 +187,203 @@
     }
   }
 
+  /* ────────────────────────────────────────────────────────────────
+     Premium SaaS-style buttons (Linear / Vercel / Framer aesthetic)
+     ──────────────────────────────────────────────────────────────── */
+
   .btn-premium {
     position: relative;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 0.55rem;
-    padding: 0.75rem 1.5rem;
-    font-family: "Space Grotesk", "Inter", sans-serif;
-    font-size: 0.875rem;
+    gap: 0.5rem;
+    padding: 0.7rem 1.35rem;
+    font-family: "Inter", "Space Grotesk", sans-serif;
+    font-size: 0.9rem;
     font-weight: 600;
-    letter-spacing: -0.015em;
-    color: hsl(0 0% 100% / 0.98);
-    border-radius: 9999px;
+    letter-spacing: -0.01em;
+    line-height: 1;
+    color: hsl(0 0% 100%);
+    border-radius: 12px;
     isolation: isolate;
     overflow: hidden;
+    cursor: pointer;
+    user-select: none;
     background:
-      linear-gradient(135deg,
-        hsl(265 95% 70%) 0%,
-        hsl(258 90% 60%) 45%,
-        hsl(220 95% 60%) 100%);
-    border: 1px solid hsl(265 100% 92% / 0.45);
+      linear-gradient(180deg,
+        hsl(258 92% 66%) 0%,
+        hsl(252 88% 58%) 100%);
+    border: 1px solid hsl(258 100% 78% / 0.35);
     box-shadow:
-      inset 0 1px 0 0 hsl(0 0% 100% / 0.35),
-      inset 0 -1px 0 0 hsl(252 70% 18% / 0.55),
-      0 1px 2px hsl(255 60% 4% / 0.5),
-      0 14px 36px -8px hsl(265 95% 50% / 0.55),
-      0 0 26px -4px hsl(265 95% 65% / 0.55);
+      /* crisp inner top highlight */
+      inset 0 1px 0 0 hsl(0 0% 100% / 0.25),
+      /* subtle inner bottom shade for depth */
+      inset 0 -1px 0 0 hsl(252 80% 12% / 0.4),
+      /* tight contact shadow */
+      0 1px 2px hsl(252 60% 6% / 0.5),
+      /* soft mid-distance shadow */
+      0 4px 10px -2px hsl(252 70% 8% / 0.45),
+      /* coloured glow */
+      0 12px 30px -8px hsl(258 90% 50% / 0.55);
     transition:
-      transform 0.3s var(--transition-smooth),
-      box-shadow 0.4s var(--transition-smooth),
-      filter 0.3s var(--transition-smooth);
+      transform 0.18s cubic-bezier(0.4, 0, 0.2, 1),
+      box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+      background 0.25s ease;
   }
 
-  /* Glow halo behind the button */
-  .btn-premium::after {
-    content: "";
-    position: absolute;
-    inset: -4px;
-    border-radius: inherit;
-    background: radial-gradient(
-      60% 80% at 50% 50%,
-      hsl(265 100% 65% / 0.65),
-      hsl(220 100% 60% / 0.25) 60%,
-      transparent 80%
-    );
-    filter: blur(14px);
-    z-index: -1;
-    pointer-events: none;
-    animation: premium-aura 3.4s ease-in-out infinite;
-  }
-
-  /* Continuous moving sheen */
+  /* Hover-only shimmer pass — fires once on hover, no constant animation */
   .btn-premium::before {
     content: "";
     position: absolute;
     inset: 0;
     border-radius: inherit;
     background: linear-gradient(
-      115deg,
-      transparent 30%,
-      hsl(0 0% 100% / 0.55) 50%,
-      transparent 70%
+      105deg,
+      transparent 35%,
+      hsl(0 0% 100% / 0.22) 50%,
+      transparent 65%
     );
-    background-size: 200% 100%;
-    background-position: 200% 0;
+    background-size: 220% 100%;
+    background-position: 220% 0;
+    transition: background-position 0.7s cubic-bezier(0.4, 0, 0.2, 1);
     pointer-events: none;
     z-index: 1;
-    animation: premium-sheen 3.8s ease-in-out infinite;
   }
 
   .btn-premium > * { position: relative; z-index: 2; }
 
   .btn-premium:hover {
-    transform: translateY(-2px);
-    filter: brightness(1.1) saturate(1.1);
+    transform: translateY(-1px);
+    background: linear-gradient(180deg,
+      hsl(258 95% 70%) 0%,
+      hsl(252 92% 60%) 100%);
     box-shadow:
-      inset 0 1px 0 0 hsl(0 0% 100% / 0.4),
-      inset 0 -1px 0 0 hsl(252 70% 18% / 0.55),
-      0 2px 4px hsl(255 60% 4% / 0.5),
-      0 22px 50px -8px hsl(265 100% 55% / 0.7),
-      0 0 0 1px hsl(265 100% 85% / 0.4),
-      0 0 38px -2px hsl(265 100% 65% / 0.7);
+      inset 0 1px 0 0 hsl(0 0% 100% / 0.3),
+      inset 0 -1px 0 0 hsl(252 80% 12% / 0.4),
+      0 1px 2px hsl(252 60% 6% / 0.5),
+      0 6px 14px -2px hsl(252 70% 8% / 0.5),
+      0 18px 40px -8px hsl(258 95% 55% / 0.7);
+  }
+
+  .btn-premium:hover::before {
+    background-position: -120% 0;
   }
 
   .btn-premium:active {
     transform: translateY(0);
-    filter: brightness(0.96);
+    box-shadow:
+      inset 0 1px 0 0 hsl(0 0% 100% / 0.18),
+      inset 0 -1px 0 0 hsl(252 80% 12% / 0.4),
+      0 1px 2px hsl(252 60% 6% / 0.5),
+      0 2px 6px -1px hsl(252 70% 8% / 0.4),
+      0 6px 16px -4px hsl(258 90% 50% / 0.5);
   }
 
-  /* Subtle continuous glow on the secondary CTA's edge */
-  @keyframes ghost-edge-pulse {
-    0%, 100% {
-      box-shadow:
-        inset 0 1px 0 0 hsl(0 0% 100% / 0.08),
-        inset 0 -1px 0 0 hsl(255 50% 4% / 0.5),
-        0 1px 2px hsl(255 50% 4% / 0.35),
-        0 12px 32px -10px hsl(255 50% 4% / 0.55),
-        0 0 0 1px hsl(265 80% 70% / 0.18);
-    }
-    50% {
-      box-shadow:
-        inset 0 1px 0 0 hsl(0 0% 100% / 0.12),
-        inset 0 -1px 0 0 hsl(255 50% 4% / 0.5),
-        0 1px 2px hsl(255 50% 4% / 0.35),
-        0 14px 36px -10px hsl(255 50% 4% / 0.6),
-        0 0 0 1px hsl(265 100% 80% / 0.42),
-        0 0 22px -4px hsl(265 100% 70% / 0.4);
-    }
+  .btn-premium:focus-visible {
+    outline: none;
+    box-shadow:
+      inset 0 1px 0 0 hsl(0 0% 100% / 0.25),
+      inset 0 -1px 0 0 hsl(252 80% 12% / 0.4),
+      0 0 0 2px hsl(var(--background)),
+      0 0 0 4px hsl(258 100% 70% / 0.65);
   }
+
+  /* ─────────── Secondary / ghost button ─────────── */
 
   .btn-ghost-premium {
     position: relative;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 0.55rem;
-    padding: 0.75rem 1.5rem;
-    font-family: "Space Grotesk", "Inter", sans-serif;
-    font-size: 0.875rem;
+    gap: 0.5rem;
+    padding: 0.7rem 1.35rem;
+    font-family: "Inter", "Space Grotesk", sans-serif;
+    font-size: 0.9rem;
     font-weight: 600;
-    letter-spacing: -0.015em;
-    color: hsl(var(--foreground) / 0.96);
-    border-radius: 9999px;
+    letter-spacing: -0.01em;
+    line-height: 1;
+    color: hsl(var(--foreground) / 0.95);
+    border-radius: 12px;
     isolation: isolate;
     overflow: hidden;
+    cursor: pointer;
+    user-select: none;
     background:
-      linear-gradient(180deg, hsl(255 25% 14% / 0.65) 0%, hsl(255 30% 7% / 0.6) 100%);
-    backdrop-filter: blur(20px) saturate(160%);
-    -webkit-backdrop-filter: blur(20px) saturate(160%);
-    border: 1px solid hsl(265 80% 78% / 0.28);
-    animation: ghost-edge-pulse 3.6s ease-in-out infinite;
-    transition:
-      transform 0.3s var(--transition-smooth),
-      border-color 0.3s var(--transition-smooth),
-      background 0.3s var(--transition-smooth);
-  }
-  .btn-ghost-premium::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    border-radius: inherit;
-    background: linear-gradient(
-      115deg,
-      transparent 30%,
-      hsl(270 100% 85% / 0.28) 50%,
-      transparent 70%
-    );
-    background-size: 200% 100%;
-    background-position: 200% 0;
-    pointer-events: none;
-    z-index: 1;
-    animation: premium-sheen 4.6s ease-in-out 0.6s infinite;
-  }
-  .btn-ghost-premium > * { position: relative; z-index: 2; }
-  .btn-ghost-premium:hover {
-    transform: translateY(-2px);
-    border-color: hsl(265 100% 82% / 0.55);
-    background:
-      linear-gradient(180deg, hsl(255 30% 18% / 0.7) 0%, hsl(255 35% 9% / 0.65) 100%);
-    animation: none;
+      linear-gradient(180deg,
+        hsl(255 18% 14% / 0.7) 0%,
+        hsl(255 22% 9% / 0.65) 100%);
+    backdrop-filter: blur(14px) saturate(140%);
+    -webkit-backdrop-filter: blur(14px) saturate(140%);
+    border: 1px solid hsl(255 30% 80% / 0.14);
     box-shadow:
-      inset 0 1px 0 0 hsl(0 0% 100% / 0.14),
-      inset 0 -1px 0 0 hsl(255 50% 4% / 0.5),
-      0 2px 4px hsl(255 50% 4% / 0.4),
-      0 22px 50px -10px hsl(265 90% 50% / 0.45),
-      0 0 0 1px hsl(265 100% 82% / 0.55),
-      0 0 30px -4px hsl(265 100% 70% / 0.55);
+      inset 0 1px 0 0 hsl(0 0% 100% / 0.06),
+      0 1px 2px hsl(252 60% 6% / 0.4),
+      0 4px 10px -2px hsl(252 70% 6% / 0.35);
+    transition:
+      transform 0.18s cubic-bezier(0.4, 0, 0.2, 1),
+      border-color 0.25s ease,
+      background 0.25s ease,
+      box-shadow 0.25s ease;
   }
-  .btn-ghost-premium:active { transform: translateY(0); }
 
-  /* Size modifiers for premium buttons */
-  .btn-lg { padding: 1rem 2rem; font-size: 0.95rem; }
-  .btn-sm { padding: 0.55rem 1.15rem; font-size: 0.8rem; }
-  .btn-xl { padding: 1.35rem 2.75rem; font-size: 1.1rem; font-weight: 600; letter-spacing: 0.01em; }
+  .btn-ghost-premium > * { position: relative; z-index: 2; }
+
+  .btn-ghost-premium:hover {
+    transform: translateY(-1px);
+    border-color: hsl(258 100% 82% / 0.35);
+    background:
+      linear-gradient(180deg,
+        hsl(255 22% 18% / 0.78) 0%,
+        hsl(255 25% 11% / 0.72) 100%);
+    box-shadow:
+      inset 0 1px 0 0 hsl(0 0% 100% / 0.09),
+      0 1px 2px hsl(252 60% 6% / 0.4),
+      0 8px 20px -4px hsl(252 70% 6% / 0.5),
+      0 0 0 1px hsl(258 100% 82% / 0.18),
+      0 0 24px -6px hsl(258 100% 70% / 0.35);
+  }
+
+  .btn-ghost-premium:active {
+    transform: translateY(0);
+    background:
+      linear-gradient(180deg,
+        hsl(255 22% 12% / 0.78) 0%,
+        hsl(255 25% 8% / 0.72) 100%);
+  }
+
+  .btn-ghost-premium:focus-visible {
+    outline: none;
+    box-shadow:
+      inset 0 1px 0 0 hsl(0 0% 100% / 0.06),
+      0 0 0 2px hsl(var(--background)),
+      0 0 0 4px hsl(258 100% 70% / 0.65);
+  }
+
+  /* Size modifiers */
+  .btn-sm { padding: 0.5rem 1rem; font-size: 0.8rem; border-radius: 10px; gap: 0.4rem; }
+  .btn-lg { padding: 0.85rem 1.65rem; font-size: 0.95rem; border-radius: 13px; }
+  .btn-xl { padding: 1rem 1.9rem; font-size: 1rem; border-radius: 14px; }
+
+  /* Trailing arrow detail — slides on hover */
+  .btn-arrow {
+    display: inline-flex;
+    transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .btn-premium:hover .btn-arrow,
+  .btn-ghost-premium:hover .btn-arrow {
+    transform: translateX(3px);
+  }
 
   @media (prefers-reduced-motion: reduce) {
-    .btn-premium::before,
-    .btn-premium::after,
+    .btn-premium,
     .btn-ghost-premium,
-    .btn-ghost-premium::before {
-      animation: none !important;
+    .btn-premium::before,
+    .btn-arrow {
+      transition: none !important;
+    }
+    .btn-premium:hover,
+    .btn-ghost-premium:hover {
+      transform: none !important;
     }
   }
 }
