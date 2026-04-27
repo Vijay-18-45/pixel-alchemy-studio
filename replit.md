@@ -25,3 +25,7 @@ pnpm workspace monorepo using TypeScript. Each package manages its own dependenc
 - `pnpm --filter @workspace/api-server run dev` — run API server locally
 
 See the `pnpm-workspace` skill for workspace structure, TypeScript setup, and package details.
+
+## Artifacts
+
+- **vijay-portfolio** (`/`) — React + Vite portfolio site for Vijay Bhemavarapu (premium websites for businesses). Migrated from lovable.dev. Tailwind v3 + shadcn/ui + GSAP + Lenis smooth scroll. Frontend-only (no backend, no auth).
