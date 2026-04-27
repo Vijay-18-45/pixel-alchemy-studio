@@ -107,18 +107,19 @@ const Contact = () => {
 
             <div className="mt-8 flex gap-3">
               {[
-                { Icon: GithubLogo, href: "https://github.com", label: "GitHub" },
-                { Icon: LinkedinLogo, href: "https://linkedin.com", label: "LinkedIn" },
-                { Icon: InstagramLogo, href: "https://instagram.com", label: "Instagram" },
-                { Icon: WhatsappLogo, href: "https://wa.me/918367592895", label: "WhatsApp" },
-              ].map(({ Icon, href, label }) => (
+                { Icon: GithubLogo,    href: "https://github.com/Vijay-18-45",                                              label: "GitHub",    brand: "github" },
+                { Icon: LinkedinLogo,  href: "https://www.linkedin.com/in/vijay-bhemavarapu",                                label: "LinkedIn",  brand: "linkedin" },
+                { Icon: InstagramLogo, href: "https://www.instagram.com/lowkey_core_18?igsh=azVtbXI4aTJxbnZq",               label: "Instagram", brand: "instagram" },
+                { Icon: WhatsappLogo,  href: "https://wa.me/918367592895",                                                   label: "WhatsApp",  brand: "whatsapp" },
+              ].map(({ Icon, href, label, brand }) => (
                 <a
                   key={label}
                   href={href}
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={label}
-                  className="inline-flex h-11 w-11 items-center justify-center rounded-2xl glass border-glow text-muted-foreground hover:text-primary hover:shadow-glow-soft transition-all"
+                  data-brand={brand}
+                  className="social-icon h-11 w-11 rounded-2xl glass border border-border/40"
                 >
                   <Icon size={18} weight="duotone" />
                 </a>

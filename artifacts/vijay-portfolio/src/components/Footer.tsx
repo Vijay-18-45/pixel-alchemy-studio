@@ -65,18 +65,19 @@ const Footer = () => {
             </p>
             <div className="flex gap-2">
               {[
-                { Icon: GithubLogo, href: "https://github.com", label: "GitHub" },
-                { Icon: LinkedinLogo, href: "https://linkedin.com", label: "LinkedIn" },
-                { Icon: InstagramLogo, href: "https://instagram.com", label: "Instagram" },
-                { Icon: WhatsappLogo, href: "https://wa.me/918367592895", label: "WhatsApp" },
-              ].map(({ Icon, href, label }) => (
+                { Icon: GithubLogo,    href: "https://github.com/Vijay-18-45",                                              label: "GitHub",    brand: "github" },
+                { Icon: LinkedinLogo,  href: "https://www.linkedin.com/in/vijay-bhemavarapu",                                label: "LinkedIn",  brand: "linkedin" },
+                { Icon: InstagramLogo, href: "https://www.instagram.com/lowkey_core_18?igsh=azVtbXI4aTJxbnZq",               label: "Instagram", brand: "instagram" },
+                { Icon: WhatsappLogo,  href: "https://wa.me/918367592895",                                                   label: "WhatsApp",  brand: "whatsapp" },
+              ].map(({ Icon, href, label, brand }) => (
                 <a
                   key={label}
                   href={href}
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={label}
-                  className="inline-flex h-9 w-9 items-center justify-center rounded-xl text-muted-foreground hover:text-primary hover:bg-white/5 transition-colors"
+                  data-brand={brand}
+                  className="social-icon h-9 w-9 rounded-xl border border-border/40"
                 >
                   <Icon size={16} weight="duotone" />
                 </a>
