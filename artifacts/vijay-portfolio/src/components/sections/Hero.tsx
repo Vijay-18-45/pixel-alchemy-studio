@@ -19,7 +19,7 @@ const Hero = () => {
         scale: 0.6,
         opacity: 0,
         rotate: -8,
-        duration: 1.1,
+        duration: 2.2,
         ease: "expo.out",
       })
         .from(
@@ -31,10 +31,10 @@ const Hero = () => {
             scale: 1.15,
             rotate: -4,
             filter: "blur(14px)",
-            duration: 1.4,
+            duration: 2.8,
             ease: "expo.out",
           },
-          "-=0.7",
+          "-=1.4",
         )
         .from(
           ".hero-title-line:nth-child(2)",
@@ -45,10 +45,10 @@ const Hero = () => {
             scale: 1.15,
             rotate: 4,
             filter: "blur(14px)",
-            duration: 1.4,
+            duration: 2.8,
             ease: "expo.out",
           },
-          "-=1.2",
+          "-=2.4",
         )
         .from(
           ".hero-sub",
@@ -57,10 +57,10 @@ const Hero = () => {
             scale: 0.92,
             opacity: 0,
             filter: "blur(8px)",
-            duration: 1.1,
+            duration: 2.2,
             ease: "expo.out",
           },
-          "-=0.9",
+          "-=1.8",
         )
         .from(
           ".hero-cta",
@@ -68,11 +68,11 @@ const Hero = () => {
             y: 60,
             scale: 0.7,
             opacity: 0,
-            duration: 0.9,
-            stagger: { each: 0.12, from: "center" },
+            duration: 1.8,
+            stagger: { each: 0.24, from: "center" },
             ease: "back.out(1.8)",
           },
-          "-=0.8",
+          "-=1.6",
         )
         .from(
           ".hero-stat",
@@ -80,11 +80,11 @@ const Hero = () => {
             y: 80,
             scale: 0.6,
             opacity: 0,
-            duration: 0.9,
-            stagger: { each: 0.12, from: "center" },
+            duration: 1.8,
+            stagger: { each: 0.24, from: "center" },
             ease: "back.out(1.6)",
           },
-          "-=0.6",
+          "-=1.2",
         );
 
       gsap.to(".orb-1", { y: -30, x: 20, duration: 8, repeat: -1, yoyo: true, ease: "sine.inOut" });
