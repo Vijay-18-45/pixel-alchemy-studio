@@ -6,13 +6,9 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 /**
- * Smooth scrolling using Lenis on desktop, synced with GSAP ScrollTrigger.
- *
- * - On touch/coarse-pointer devices we deliberately skip Lenis so the
- *   browser's native momentum scrolling stays buttery smooth.
- * - Respects `prefers-reduced-motion`.
- * - Uses a single light `lerp` (no `duration`) which is the recommended
- *   high-performance Lenis config.
+ * Buttery-smooth scrolling using Lenis, synced with GSAP ScrollTrigger so
+ * scroll-triggered animations fire at the right moment. Respects
+ * prefers-reduced-motion.
  */
 export function useLenis() {
   const initialized = useRef(false);
@@ -21,20 +17,8 @@ export function useLenis() {
     if (initialized.current) return;
     initialized.current = true;
 
-    const reduceMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)",
-    ).matches;
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (reduceMotion) return;
-
-    // Touch devices have excellent native scroll. Lenis on touch causes
-    // perceived lag because it overrides the browser's momentum physics.
-    const isTouch = window.matchMedia("(hover: none), (pointer: coarse)")
-      .matches;
-    if (isTouch) {
-      // Still let ScrollTrigger work with the native scroll.
-      ScrollTrigger.refresh();
-      return;
-    }
 
     let lenis: LenisType | undefined;
     let cleanup: (() => void) | undefined;
@@ -42,24 +26,28 @@ export function useLenis() {
     (async () => {
       const Lenis = (await import("lenis")).default;
       lenis = new Lenis({
-        // A single lerp value gives the smoothest, lowest-latency feel.
-        // Higher = snappier, lower = more glide. 0.12 is a sweet spot.
-        lerp: 0.12,
+        // Higher duration + custom easing = premium, agency-grade feel
+        duration: 1.4,
+        easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
         smoothWheel: true,
         wheelMultiplier: 1,
-        // Disable Lenis touch handling — fall back to native scroll on
-        // any device that does fire touch events on a hybrid laptop.
-        syncTouch: false,
+        touchMultiplier: 1.6,
+        lerp: 0.085,
       });
 
-      // Drive Lenis from GSAP's ticker so they share one rAF loop.
+      // Drive Lenis from GSAP's ticker so it shares a single rAF loop with
+      // ScrollTrigger — this prevents jitter and missed triggers.
       const onTick = (time: number) => {
         lenis?.raf(time * 1000);
       };
       gsap.ticker.add(onTick);
       gsap.ticker.lagSmoothing(0);
 
+      // Notify ScrollTrigger on every Lenis scroll so its progress stays in
+      // perfect sync with the smoothed scroll position.
       lenis.on("scroll", ScrollTrigger.update);
+
+      // Recompute trigger positions after layout is fully painted.
       ScrollTrigger.refresh();
 
       cleanup = () => {

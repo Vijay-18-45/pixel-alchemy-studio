@@ -136,40 +136,34 @@ const Hero = () => {
           "-=0.4",
         );
 
-      // Ambient float loop — desktop only. Animating large blurred elements
-      // is expensive on mobile GPUs and causes scroll jank.
-      const isDesktop = window.matchMedia(
-        "(min-width: 768px) and (hover: hover)",
-      ).matches;
-      if (isDesktop) {
-        gsap.to(".orb-1", {
-          y: -30,
-          x: 20,
-          duration: 8,
-          repeat: -1,
-          yoyo: true,
-          ease: "sine.inOut",
-          delay: 4,
-        });
-        gsap.to(".orb-2", {
-          y: 25,
-          x: -15,
-          duration: 10,
-          repeat: -1,
-          yoyo: true,
-          ease: "sine.inOut",
-          delay: 4,
-        });
-        gsap.to(".orb-3", {
-          y: -20,
-          x: -25,
-          duration: 12,
-          repeat: -1,
-          yoyo: true,
-          ease: "sine.inOut",
-          delay: 4,
-        });
-      }
+      // Ambient float loop — kicks in after the entry animation completes
+      gsap.to(".orb-1", {
+        y: -30,
+        x: 20,
+        duration: 8,
+        repeat: -1,
+        yoyo: true,
+        ease: "sine.inOut",
+        delay: 4,
+      });
+      gsap.to(".orb-2", {
+        y: 25,
+        x: -15,
+        duration: 10,
+        repeat: -1,
+        yoyo: true,
+        ease: "sine.inOut",
+        delay: 4,
+      });
+      gsap.to(".orb-3", {
+        y: -20,
+        x: -25,
+        duration: 12,
+        repeat: -1,
+        yoyo: true,
+        ease: "sine.inOut",
+        delay: 4,
+      });
     }, root);
     return () => ctx.revert();
   }, []);
