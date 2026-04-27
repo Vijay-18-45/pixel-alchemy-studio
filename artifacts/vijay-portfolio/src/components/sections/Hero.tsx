@@ -100,31 +100,28 @@ const Hero = () => {
         .from(
           ".hero-cta",
           {
-            y: (i) => (i === 0 ? 180 : -180),
-            x: (i) => (i === 0 ? -280 : 280),
-            scale: 0.4,
-            rotate: (i) => (i === 0 ? -18 : 18),
+            y: 140,
+            scale: 0.5,
             opacity: 0,
-            filter: "blur(10px)",
-            duration: 2.8,
-            stagger: { each: 0.18, from: "center" },
+            duration: 2.4,
+            stagger: { each: 0.22, from: "center" },
             ease: "back.out(1.6)",
+            clearProps: "transform,opacity",
           },
           "-=2.2",
         )
         .from(
           ".hero-stat",
           {
-            y: 220,
-            scale: 0.4,
-            rotate: (i) => (i - 1) * 12,
+            y: 180,
+            scale: 0.5,
             opacity: 0,
-            filter: "blur(10px)",
-            duration: 2.6,
-            stagger: { each: 0.3, from: "center" },
+            duration: 2.2,
+            stagger: { each: 0.28, from: "center" },
             ease: "back.out(1.5)",
+            clearProps: "transform,opacity",
           },
-          "-=1.8",
+          "-=1.6",
         )
         // Final "settle" pulse — a subtle breath after everything converges
         .to(
