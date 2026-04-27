@@ -1,0 +1,20 @@
+uploads = []
+outputs = []
+
+[[generated]]
+id = "0bVGAT1571o9hXIWVvFF9"
+uri = "file://artifacts/vijay-portfolio/src/assets/project-realestate.png"
+type = "image"
+title = "real estate website mockup"
+
+[[generated]]
+id = "67V0NkR6kr0wfok6lFZUy"
+uri = "file://artifacts/vijay-portfolio/src/assets/project-techstartup.png"
+type = "image"
+title = "tech startup website mockup"
+
+[[generated]]
+id = "1eXnJ0bi_8nCYKcdDdSFD"
+uri = "file://artifacts/vijay-portfolio/src/assets/project-dental.png"
+type = "image"
+title = "dental clinic website mockup"

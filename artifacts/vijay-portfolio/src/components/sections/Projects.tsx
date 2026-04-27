@@ -1,23 +1,65 @@
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { ArrowUpRight } from "@phosphor-icons/react";
-import restaurant from "@/assets/project-restaurant.jpg";
+import { ArrowUpRight, Barbell, Tooth, ForkKnife, Buildings, Scissors, Rocket } from "@phosphor-icons/react";
 import gym from "@/assets/project-gym.jpg";
-import clinic from "@/assets/project-clinic.jpg";
+import dental from "@/assets/project-dental.png";
+import restaurant from "@/assets/project-restaurant.jpg";
+import realestate from "@/assets/project-realestate.png";
 import salon from "@/assets/project-salon.jpg";
-import construction from "@/assets/project-construction.jpg";
-import store from "@/assets/project-store.jpg";
+import techstartup from "@/assets/project-techstartup.png";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const projects = [
-  { img: restaurant, title: "Restaurant Website", desc: "Online menu, reservations, gallery.", stack: ["React", "Tailwind", "GSAP"] },
-  { img: gym, title: "Gym Website", desc: "Class schedules, trainers, memberships.", stack: ["React", "Tailwind", "Framer"] },
-  { img: clinic, title: "Doctor Clinic", desc: "Online booking & patient portal.", stack: ["Next.js", "Tailwind"] },
-  { img: salon, title: "Salon Website", desc: "Service catalog & instant bookings.", stack: ["React", "Tailwind"] },
-  { img: construction, title: "Construction Co.", desc: "Project portfolio & lead funnel.", stack: ["React", "GSAP"] },
-  { img: store, title: "Online Store", desc: "Premium ecommerce with cart & checkout.", stack: ["Next.js", "Stripe"] },
+  {
+    img: gym,
+    icon: Barbell,
+    industry: "Gym / Fitness",
+    name: "PulseFit Studio",
+    desc: "Class schedules, trainer profiles, and membership signups.",
+    accent: "from-fuchsia-500/40 to-purple-600/40",
+  },
+  {
+    img: dental,
+    icon: Tooth,
+    industry: "Dental Clinic",
+    name: "Bright Smile Dental",
+    desc: "Online appointments, treatment menus, and patient reviews.",
+    accent: "from-sky-500/40 to-indigo-600/40",
+  },
+  {
+    img: restaurant,
+    icon: ForkKnife,
+    industry: "Restaurant",
+    name: "Spice Route Café",
+    desc: "Digital menu, table reservations, and food photography.",
+    accent: "from-amber-500/40 to-pink-600/40",
+  },
+  {
+    img: realestate,
+    icon: Buildings,
+    industry: "Real Estate",
+    name: "Skyline Realty",
+    desc: "Property listings, virtual tours, and lead capture.",
+    accent: "from-emerald-500/40 to-teal-600/40",
+  },
+  {
+    img: salon,
+    icon: Scissors,
+    industry: "Salon / Spa",
+    name: "Velvet Beauty Lounge",
+    desc: "Service catalog, instant bookings, and stylist showcase.",
+    accent: "from-rose-500/40 to-fuchsia-600/40",
+  },
+  {
+    img: techstartup,
+    icon: Rocket,
+    industry: "Tech Startup",
+    name: "Nimbus Cloud",
+    desc: "Product landing, pricing tiers, and demo signups.",
+    accent: "from-violet-500/40 to-blue-600/40",
+  },
 ];
 
 const Projects = () => {
@@ -65,58 +107,83 @@ const Projects = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
-          {projects.map((p) => (
-            <article
-              key={p.title}
-              className="project-card group glass border-glow rounded-3xl overflow-hidden flex flex-col transition-all duration-500 hover:-translate-y-2"
-            >
-              <div className="relative aspect-[16/10] overflow-hidden">
-                <img
-                  src={p.img}
-                  alt={`${p.title} preview`}
-                  width={1024}
-                  height={640}
-                  loading="lazy"
-                  className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-background via-background/30 to-transparent opacity-80" />
-                <div className="absolute inset-0 bg-gradient-primary opacity-0 group-hover:opacity-20 transition-opacity duration-500" />
-              </div>
+        <div className="relative mx-auto max-w-6xl">
+          {/* Soft glowing gradient behind the grid */}
+          <div
+            aria-hidden
+            className="pointer-events-none absolute -inset-10 -z-10 rounded-[3rem] opacity-60 blur-3xl"
+            style={{
+              background:
+                "radial-gradient(60% 50% at 30% 20%, hsl(265 95% 60% / 0.25), transparent 70%), radial-gradient(60% 50% at 80% 80%, hsl(220 95% 55% / 0.22), transparent 70%)",
+            }}
+          />
 
-              <div className="p-6 flex flex-col gap-3 flex-1">
-                <div className="flex items-start justify-between gap-3">
-                  <h3 className="font-display text-xl font-semibold">{p.title}</h3>
-                  <ArrowUpRight
-                    size={20}
-                    className="text-muted-foreground group-hover:text-primary group-hover:-translate-y-1 group-hover:translate-x-1 transition-all"
-                  />
-                </div>
-                <p className="text-sm text-muted-foreground">{p.desc}</p>
-                <div className="flex flex-wrap gap-1.5 mt-2">
-                  {p.stack.map((s) => (
-                    <span
-                      key={s}
-                      className="text-[10px] font-mono uppercase tracking-wider rounded-full border border-primary/30 px-2 py-0.5 text-primary/90"
-                    >
-                      {s}
-                    </span>
-                  ))}
-                </div>
-
-                <a
-                  href="#contact"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
-                  }}
-                  className="btn-ghost-premium mt-3"
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-7 justify-items-stretch">
+            {projects.map((p) => {
+              const Icon = p.icon;
+              return (
+                <article
+                  key={p.name}
+                  className="project-card group relative flex flex-col overflow-hidden rounded-[24px] glass border-glow transition-all duration-500 will-change-transform hover:-translate-y-2 hover:scale-[1.03] hover:shadow-glow-primary"
                 >
-                  Get Similar Website
-                </a>
-              </div>
-            </article>
-          ))}
+                  {/* Accent halo behind card on hover */}
+                  <div
+                    aria-hidden
+                    className={`pointer-events-none absolute -inset-px rounded-[24px] bg-gradient-to-br ${p.accent} opacity-0 group-hover:opacity-100 transition-opacity duration-500`}
+                    style={{ filter: "blur(28px)", zIndex: -1 }}
+                  />
+
+                  {/* Thumbnail / mockup */}
+                  <div className="relative aspect-[16/10] overflow-hidden">
+                    <img
+                      src={p.img}
+                      alt={`${p.name} — ${p.industry} website preview`}
+                      width={1024}
+                      height={640}
+                      loading="lazy"
+                      decoding="async"
+                      className="h-full w-full object-cover will-change-transform transition-transform duration-700 ease-out group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent opacity-90" />
+                    <div
+                      className={`absolute inset-0 bg-gradient-to-br ${p.accent} opacity-0 group-hover:opacity-50 transition-opacity duration-500 mix-blend-screen`}
+                    />
+                    {/* Industry chip */}
+                    <span className="absolute top-4 left-4 inline-flex items-center gap-1.5 rounded-full glass px-3 py-1 text-[10px] font-mono uppercase tracking-[0.18em] text-foreground/90">
+                      <Icon size={12} weight="fill" />
+                      {p.industry}
+                    </span>
+                  </div>
+
+                  {/* Body */}
+                  <div className="relative p-6 md:p-7 flex flex-col gap-3 flex-1">
+                    <div className="flex items-start justify-between gap-3">
+                      <h3 className="font-display text-xl md:text-[1.35rem] font-semibold leading-tight">
+                        {p.name}
+                      </h3>
+                      <ArrowUpRight
+                        size={20}
+                        className="shrink-0 text-muted-foreground group-hover:text-primary group-hover:-translate-y-1 group-hover:translate-x-1 transition-all"
+                      />
+                    </div>
+                    <p className="text-sm text-muted-foreground leading-relaxed">{p.desc}</p>
+
+                    <a
+                      href="#contact"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
+                      }}
+                      className="btn-ghost-premium mt-auto self-start"
+                    >
+                      View Project
+                      <ArrowUpRight size={16} weight="bold" />
+                    </a>
+                  </div>
+                </article>
+              );
+            })}
+          </div>
         </div>
       </div>
     </section>
