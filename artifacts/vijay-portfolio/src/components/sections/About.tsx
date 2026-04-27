@@ -2,28 +2,28 @@ import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import {
-  FileHtml,
-  FileCss,
-  FileJs,
-  Atom,
-  Wind,
-  MagicWand,
   MagnifyingGlass,
-  PaintBrush,
+  Crown,
+  TrendUp,
+  Lightning,
+  DeviceMobile,
+  Storefront,
+  ChartLineUp,
+  Headset,
 } from "@phosphor-icons/react";
 import portrait from "@/assets/developer-portrait.jpg";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const skills = [
-  { icon: FileHtml, label: "HTML" },
-  { icon: FileCss, label: "CSS" },
-  { icon: FileJs, label: "JavaScript" },
-  { icon: Atom, label: "React" },
-  { icon: Wind, label: "Tailwind" },
-  { icon: MagicWand, label: "GSAP" },
-  { icon: MagnifyingGlass, label: "SEO" },
-  { icon: PaintBrush, label: "UI/UX" },
+const offerings = [
+  { icon: MagnifyingGlass, label: "SEO Ready" },
+  { icon: Crown, label: "Premium Design" },
+  { icon: TrendUp, label: "More Leads" },
+  { icon: Lightning, label: "Blazing Fast" },
+  { icon: DeviceMobile, label: "Mobile First" },
+  { icon: Storefront, label: "Sells 24/7" },
+  { icon: ChartLineUp, label: "Growth Focused" },
+  { icon: Headset, label: "Always On Support" },
 ];
 
 const About = () => {
@@ -49,13 +49,13 @@ const About = () => {
         ease: "power3.out",
         scrollTrigger: { trigger: root.current, start: "top 75%" },
       });
-      gsap.from(".skill-item", {
+      gsap.from(".offering-item", {
         scale: 0.8,
         opacity: 0,
         duration: 0.5,
         stagger: 0.06,
         ease: "back.out(1.6)",
-        scrollTrigger: { trigger: ".skills-grid", start: "top 85%" },
+        scrollTrigger: { trigger: ".offerings-grid", start: "top 85%" },
       });
     }, root);
     return () => ctx.revert();
@@ -99,14 +99,14 @@ const About = () => {
               build trust, and increase sales. Every pixel is crafted with conversion in mind.
             </p>
 
-            <div className="skills-grid mt-10 grid grid-cols-4 gap-3 md:gap-4">
-              {skills.map(({ icon: Icon, label }) => (
+            <div className="offerings-grid mt-10 grid grid-cols-2 sm:grid-cols-4 gap-3 md:gap-4">
+              {offerings.map(({ icon: Icon, label }) => (
                 <div
                   key={label}
-                  className="skill-item glass border-glow rounded-2xl p-3 md:p-4 flex flex-col items-center gap-2 hover:-translate-y-1 transition-transform duration-300"
+                  className="offering-item glass border-glow rounded-2xl p-3 md:p-4 flex flex-col items-center text-center gap-2 hover:-translate-y-1 transition-transform duration-300"
                 >
-                  <Icon size={24} weight="duotone" className="text-primary" />
-                  <span className="text-[10px] md:text-xs font-medium text-muted-foreground">
+                  <Icon size={26} weight="duotone" className="text-primary" />
+                  <span className="text-[11px] md:text-xs font-medium text-muted-foreground leading-tight">
                     {label}
                   </span>
                 </div>
