@@ -10,12 +10,82 @@ const Hero = () => {
       const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
       if (reduce) return;
 
-      const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
-      tl.from(".hero-eyebrow", { y: 20, opacity: 0, duration: 0.6 })
-        .from(".hero-title-line", { y: 60, opacity: 0, duration: 0.9, stagger: 0.12 }, "-=0.3")
-        .from(".hero-sub", { y: 20, opacity: 0, duration: 0.6 }, "-=0.5")
-        .from(".hero-cta", { y: 20, opacity: 0, duration: 0.5, stagger: 0.1 }, "-=0.3")
-        .from(".hero-stat", { y: 20, opacity: 0, duration: 0.5, stagger: 0.08 }, "-=0.3");
+      const tl = gsap.timeline({ defaults: { ease: "power4.out" } });
+
+      // Cinematic entry: every element flies in from a different angle
+      // and converges to its final position.
+      tl.from(".hero-eyebrow", {
+        y: -120,
+        scale: 0.6,
+        opacity: 0,
+        rotate: -8,
+        duration: 1.1,
+        ease: "expo.out",
+      })
+        .from(
+          ".hero-title-line:nth-child(1)",
+          {
+            x: -300,
+            y: 40,
+            opacity: 0,
+            scale: 1.15,
+            rotate: -4,
+            filter: "blur(14px)",
+            duration: 1.4,
+            ease: "expo.out",
+          },
+          "-=0.7",
+        )
+        .from(
+          ".hero-title-line:nth-child(2)",
+          {
+            x: 300,
+            y: -40,
+            opacity: 0,
+            scale: 1.15,
+            rotate: 4,
+            filter: "blur(14px)",
+            duration: 1.4,
+            ease: "expo.out",
+          },
+          "-=1.2",
+        )
+        .from(
+          ".hero-sub",
+          {
+            y: 80,
+            scale: 0.92,
+            opacity: 0,
+            filter: "blur(8px)",
+            duration: 1.1,
+            ease: "expo.out",
+          },
+          "-=0.9",
+        )
+        .from(
+          ".hero-cta",
+          {
+            y: 60,
+            scale: 0.7,
+            opacity: 0,
+            duration: 0.9,
+            stagger: { each: 0.12, from: "center" },
+            ease: "back.out(1.8)",
+          },
+          "-=0.8",
+        )
+        .from(
+          ".hero-stat",
+          {
+            y: 80,
+            scale: 0.6,
+            opacity: 0,
+            duration: 0.9,
+            stagger: { each: 0.12, from: "center" },
+            ease: "back.out(1.6)",
+          },
+          "-=0.6",
+        );
 
       gsap.to(".orb-1", { y: -30, x: 20, duration: 8, repeat: -1, yoyo: true, ease: "sine.inOut" });
       gsap.to(".orb-2", { y: 25, x: -15, duration: 10, repeat: -1, yoyo: true, ease: "sine.inOut" });
