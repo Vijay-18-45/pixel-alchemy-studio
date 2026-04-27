@@ -80,18 +80,18 @@ const WhyWebsite = () => {
   }, []);
 
   return (
-    <section ref={root} className="relative py-24 md:py-32">
-      <div className="container mx-auto px-6">
-        <div className="why-heading text-center max-w-2xl mx-auto mb-14">
-          <span className="inline-block text-xs font-mono uppercase tracking-[0.3em] text-primary/80 mb-4">
+    <section ref={root} className="relative py-20 sm:py-24 md:py-32">
+      <div className="container mx-auto px-5 sm:px-6">
+        <div className="why-heading text-center max-w-2xl mx-auto mb-10 sm:mb-14">
+          <span className="inline-block text-[10px] sm:text-xs font-mono uppercase tracking-[0.3em] text-primary/80 mb-3 sm:mb-4">
             Why Now
           </span>
-          <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
+          <h2 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
             Your Customers
             <br />
             <span className="text-gradient">Search Online First</span>
           </h2>
-          <p className="mt-5 text-muted-foreground">
+          <p className="mt-4 sm:mt-5 text-sm sm:text-base text-muted-foreground">
             In 2026, no website means no business. Here's what a premium site actually does for you.
           </p>
         </div>
@@ -100,12 +100,12 @@ const WhyWebsite = () => {
           {stats.map(({ icon: Icon, num, suffix, label, desc }) => (
             <div
               key={label}
-              className="why-stat glass border-glow rounded-3xl p-6 flex flex-col items-start gap-3 hover:-translate-y-1 transition-transform duration-300"
+              className="why-stat glass border-glow rounded-3xl p-5 sm:p-6 flex flex-col items-start gap-3 hover:-translate-y-1 transition-transform duration-300"
             >
               <div className="inline-flex items-center justify-center h-11 w-11 rounded-2xl bg-gradient-primary text-primary-foreground shadow-glow-soft">
                 <Icon size={20} weight="duotone" />
               </div>
-              <div className="font-display text-3xl md:text-4xl font-bold text-gradient">
+              <div className="font-display text-2xl sm:text-3xl md:text-4xl font-bold text-gradient">
                 <Counter to={num} suffix={suffix} />
               </div>
               <div>

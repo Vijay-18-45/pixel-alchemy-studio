@@ -40,13 +40,13 @@ const Testimonials = () => {
   }, [paused]);
 
   return (
-    <section className="relative py-24 md:py-32">
-      <div className="container mx-auto px-6">
-        <div className="text-center max-w-2xl mx-auto mb-14">
-          <span className="inline-block text-xs font-mono uppercase tracking-[0.3em] text-primary/80 mb-4">
+    <section className="relative py-20 sm:py-24 md:py-32">
+      <div className="container mx-auto px-5 sm:px-6">
+        <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-14">
+          <span className="inline-block text-[10px] sm:text-xs font-mono uppercase tracking-[0.3em] text-primary/80 mb-3 sm:mb-4">
             Testimonials
           </span>
-          <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
+          <h2 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
             Loved by <span className="text-gradient">Business Owners</span>
           </h2>
         </div>
@@ -56,27 +56,27 @@ const Testimonials = () => {
           onMouseEnter={() => setPaused(true)}
           onMouseLeave={() => setPaused(false)}
         >
-          <div className="relative h-[280px] md:h-[240px]">
+          <div className="relative min-h-[340px] sm:min-h-[280px] md:min-h-[240px]">
             {testimonials.map((t, i) => (
               <article
                 key={t.name}
-                className={`absolute inset-0 glass-strong border-glow rounded-3xl p-8 md:p-12 flex flex-col justify-center transition-all duration-700 ${
+                className={`absolute inset-0 glass-strong border-glow rounded-3xl p-6 sm:p-8 md:p-12 flex flex-col justify-center transition-all duration-700 ${
                   i === index
                     ? "opacity-100 translate-y-0 pointer-events-auto"
                     : "opacity-0 translate-y-4 pointer-events-none"
                 }`}
               >
-                <div className="flex gap-1 mb-4">
+                <div className="flex gap-1 mb-3 sm:mb-4">
                   {Array.from({ length: 5 }).map((_, s) => (
-                    <Star key={s} size={18} weight="fill" className="text-primary" />
+                    <Star key={s} size={16} weight="fill" className="text-primary" />
                   ))}
                 </div>
-                <p className="font-display text-lg md:text-2xl leading-relaxed text-foreground">
+                <p className="font-display text-base sm:text-lg md:text-2xl leading-relaxed text-foreground">
                   "{t.quote}"
                 </p>
-                <div className="mt-6">
-                  <div className="font-semibold text-foreground">{t.name}</div>
-                  <div className="text-sm text-muted-foreground">{t.role}</div>
+                <div className="mt-5 sm:mt-6">
+                  <div className="font-semibold text-foreground text-sm sm:text-base">{t.name}</div>
+                  <div className="text-xs sm:text-sm text-muted-foreground">{t.role}</div>
                 </div>
               </article>
             ))}

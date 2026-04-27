@@ -74,14 +74,14 @@ const About = () => {
   }, []);
 
   return (
-    <section id="about" ref={root} className="relative py-24 md:py-32">
-      <div className="container mx-auto px-6">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+    <section id="about" ref={root} className="relative py-20 sm:py-24 md:py-32">
+      <div className="container mx-auto px-5 sm:px-6">
+        <div className="grid lg:grid-cols-2 gap-10 sm:gap-12 lg:gap-20 items-center">
           {/* Image */}
           <div className="about-img flex justify-center lg:justify-start">
             <div className="relative group">
               <div className="absolute -inset-4 rounded-full bg-gradient-aurora opacity-60 blur-2xl group-hover:opacity-90 transition-opacity duration-500" />
-              <div className="relative h-72 w-72 md:h-96 md:w-96 rounded-full overflow-hidden border-2 border-primary/40 shadow-glow-primary transition-transform duration-500 group-hover:-translate-y-2 group-hover:rotate-1">
+              <div className="relative h-56 w-56 sm:h-72 sm:w-72 md:h-96 md:w-96 rounded-full overflow-hidden border-2 border-primary/40 shadow-glow-primary transition-transform duration-500 group-hover:-translate-y-2 group-hover:rotate-1">
                 <img
                   src={portrait}
                   alt="Vijay Bhemavarapu — web developer portrait"
@@ -91,7 +91,7 @@ const About = () => {
                   className="h-full w-full object-cover"
                 />
               </div>
-              <div className="absolute -bottom-2 -right-2 glass-strong rounded-2xl px-4 py-2 text-sm font-medium">
+              <div className="absolute -bottom-1 -right-1 sm:-bottom-2 sm:-right-2 glass-strong rounded-2xl px-3 py-1.5 sm:px-4 sm:py-2 text-xs sm:text-sm font-medium">
                 <span className="text-gradient font-semibold">3+ years</span>
                 <span className="text-muted-foreground"> · building</span>
               </div>
@@ -100,24 +100,24 @@ const About = () => {
 
           {/* Content */}
           <div className="about-content">
-            <span className="inline-block text-xs font-mono uppercase tracking-[0.3em] text-primary/80 mb-4">
+            <span className="inline-block text-[10px] sm:text-xs font-mono uppercase tracking-[0.3em] text-primary/80 mb-3 sm:mb-4">
               About Me
             </span>
-            <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
+            <h2 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
               Why <span className="text-gradient">Work With Me?</span>
             </h2>
-            <p className="mt-6 text-base md:text-lg text-muted-foreground leading-relaxed">
+            <p className="mt-5 sm:mt-6 text-sm sm:text-base md:text-lg text-muted-foreground leading-relaxed">
               I build fast, modern, mobile-friendly business websites designed to attract leads,
               build trust, and increase sales. Every pixel is crafted with conversion in mind.
             </p>
 
-            <div className="offerings-grid mt-10 grid grid-cols-2 sm:grid-cols-4 gap-3 md:gap-4">
+            <div className="offerings-grid mt-8 sm:mt-10 grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-3 md:gap-4">
               {offerings.map(({ icon: Icon, label }) => (
                 <div
                   key={label}
                   className="offering-item glass border-glow rounded-2xl p-3 md:p-4 flex flex-col items-center text-center gap-2 hover:-translate-y-1 transition-transform duration-300"
                 >
-                  <Icon size={26} weight="duotone" className="text-primary" />
+                  <Icon size={24} weight="duotone" className="text-primary" />
                   <span className="text-[11px] md:text-xs font-medium text-muted-foreground leading-tight">
                     {label}
                   </span>

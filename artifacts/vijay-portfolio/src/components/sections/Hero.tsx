@@ -172,7 +172,7 @@ const Hero = () => {
     <section
       id="home"
       ref={root}
-      className="relative min-h-screen flex items-center pt-32 pb-20 overflow-hidden"
+      className="relative min-h-screen flex items-center pt-28 pb-16 sm:pt-32 sm:pb-20 overflow-hidden"
     >
       {/* Background visuals */}
       <div className="absolute inset-0 grid-glow opacity-50" />
@@ -196,24 +196,24 @@ const Hero = () => {
         ))}
       </div>
 
-      <div className="container relative z-10 mx-auto px-6 text-center">
-        <div className="hero-eyebrow inline-flex items-center gap-2 rounded-full glass px-4 py-1.5 text-xs font-medium text-muted-foreground mb-8">
+      <div className="container relative z-10 mx-auto px-5 sm:px-6 text-center">
+        <div className="hero-eyebrow inline-flex items-center gap-2 rounded-full glass px-3 py-1 sm:px-4 sm:py-1.5 text-[10px] sm:text-xs font-medium text-muted-foreground mb-6 sm:mb-8">
           <span className="h-1.5 w-1.5 rounded-full bg-secondary animate-pulse" />
-          Available for new projects · 2026
+          <span className="whitespace-nowrap">Available for new projects · 2026</span>
         </div>
 
-        <h1 className="font-display font-bold leading-[1.05] text-5xl sm:text-6xl md:text-7xl lg:text-8xl tracking-tight max-w-5xl mx-auto">
+        <h1 className="font-display font-bold leading-[1.05] text-4xl sm:text-6xl md:text-7xl lg:text-8xl tracking-tight max-w-5xl mx-auto">
           <span className="hero-title-line block">I Build Websites</span>
           <span className="hero-title-line block text-gradient">That Grow Businesses</span>
         </h1>
 
-        <p className="hero-sub mx-auto mt-8 max-w-2xl text-base md:text-lg text-muted-foreground leading-relaxed">
+        <p className="hero-sub mx-auto mt-5 sm:mt-8 max-w-2xl text-sm sm:text-base md:text-lg text-muted-foreground leading-relaxed px-2 sm:px-0">
           Hi, I'm <span className="text-foreground font-medium">Vijay Bhemavarapu</span> — a web
           developer helping businesses, brands, and local companies create premium websites that
           convert visitors into customers.
         </p>
 
-        <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3">
+        <div className="mt-7 sm:mt-8 flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 max-w-sm sm:max-w-none mx-auto">
           <a
             href="#contact"
             onClick={(e) => {
@@ -237,15 +237,15 @@ const Hero = () => {
           </a>
         </div>
 
-        <div className="mt-16 grid grid-cols-3 gap-4 md:gap-8 max-w-2xl mx-auto">
+        <div className="mt-12 sm:mt-16 grid grid-cols-3 gap-3 sm:gap-4 md:gap-8 max-w-2xl mx-auto">
           {[
             { num: "50+", label: "Websites Delivered" },
             { num: "100%", label: "Client Focus" },
             { num: "24/7", label: "Online Sales" },
           ].map((s) => (
             <div key={s.label} className="hero-stat text-center">
-              <div className="font-display text-2xl md:text-4xl font-bold text-gradient">{s.num}</div>
-              <div className="mt-1 text-xs md:text-sm text-muted-foreground">{s.label}</div>
+              <div className="font-display text-xl sm:text-2xl md:text-4xl font-bold text-gradient">{s.num}</div>
+              <div className="mt-1 text-[10px] sm:text-xs md:text-sm text-muted-foreground leading-tight">{s.label}</div>
             </div>
           ))}
         </div>

@@ -33,11 +33,11 @@ const Footer = () => {
         ))}
       </div>
 
-      <div className="container relative z-10 mx-auto px-6">
-        <div className="glass-strong border-glow rounded-3xl p-8 md:p-12">
-          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8">
+      <div className="container relative z-10 mx-auto px-5 sm:px-6">
+        <div className="glass-strong border-glow rounded-3xl p-6 sm:p-8 md:p-12">
+          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 sm:gap-8">
             <div>
-              <a href="#home" onClick={(e) => handleClick(e, "#home")} className="font-display text-2xl font-bold text-gradient">
+              <a href="#home" onClick={(e) => handleClick(e, "#home")} className="font-display text-xl sm:text-2xl font-bold text-gradient">
                 Vijay Bhemavarapu
               </a>
               <p className="mt-2 text-sm text-muted-foreground max-w-sm">
@@ -45,7 +45,7 @@ const Footer = () => {
               </p>
             </div>
 
-            <nav className="flex flex-wrap gap-x-6 gap-y-2">
+            <nav className="flex flex-wrap gap-x-5 sm:gap-x-6 gap-y-2">
               {links.map((l) => (
                 <a
                   key={l.href}

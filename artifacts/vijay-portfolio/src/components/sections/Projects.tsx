@@ -87,19 +87,19 @@ const Projects = () => {
 
   return (
     <section id="projects" ref={root} className="relative py-24 md:py-32">
-      <div className="container mx-auto px-6">
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-14">
+      <div className="container mx-auto px-5 sm:px-6">
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-5 sm:gap-6 mb-10 sm:mb-14">
           <div className="max-w-xl">
-            <span className="inline-block text-xs font-mono uppercase tracking-[0.3em] text-primary/80 mb-4">
+            <span className="inline-block text-[10px] sm:text-xs font-mono uppercase tracking-[0.3em] text-primary/80 mb-3 sm:mb-4">
               Selected Work
             </span>
-            <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
+            <h2 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
               Real Websites,
               <br />
               <span className="text-gradient">Real Businesses</span>
             </h2>
           </div>
-          <p className="text-muted-foreground md:text-right md:max-w-sm">
+          <p className="text-sm sm:text-base text-muted-foreground md:text-right md:max-w-sm">
             A glimpse at the kind of premium business websites I build — yours could be next.
           </p>
         </div>

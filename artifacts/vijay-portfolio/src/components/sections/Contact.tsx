@@ -63,35 +63,35 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" ref={root} className="relative py-24 md:py-32">
-      <div className="container mx-auto px-6">
+    <section id="contact" ref={root} className="relative py-20 sm:py-24 md:py-32">
+      <div className="container mx-auto px-5 sm:px-6">
         <div className="grid lg:grid-cols-5 gap-10 lg:gap-14">
           {/* Heading + info */}
           <div className="lg:col-span-2 contact-heading">
-            <span className="inline-block text-xs font-mono uppercase tracking-[0.3em] text-primary/80 mb-4">
+            <span className="inline-block text-[10px] sm:text-xs font-mono uppercase tracking-[0.3em] text-primary/80 mb-3 sm:mb-4">
               Get In Touch
             </span>
-            <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
+            <h2 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
               Let's Build Your
               <br />
               <span className="text-gradient">Business Website</span>
             </h2>
-            <p className="mt-5 text-muted-foreground max-w-md">
+            <p className="mt-4 sm:mt-5 text-sm sm:text-base text-muted-foreground max-w-md">
               Tell me about your business — I'll send back ideas, a timeline, and a clear quote
               within 24 hours.
             </p>
 
-            <div className="mt-8 space-y-4">
+            <div className="mt-7 sm:mt-8 space-y-4">
               <a
                 href="mailto:vijayjosephchinni367@gmail.com"
-                className="flex items-center gap-3 group"
+                className="flex items-center gap-3 group min-w-0"
               >
-                <span className="inline-flex h-11 w-11 items-center justify-center rounded-2xl glass border-glow text-primary group-hover:shadow-glow-soft transition-shadow">
+                <span className="shrink-0 inline-flex h-11 w-11 items-center justify-center rounded-2xl glass border-glow text-primary group-hover:shadow-glow-soft transition-shadow">
                   <EnvelopeSimple size={18} weight="duotone" />
                 </span>
-                <div>
+                <div className="min-w-0 flex-1">
                   <div className="text-xs text-muted-foreground">Email</div>
-                  <div className="text-sm text-foreground">vijayjosephchinni367@gmail.com</div>
+                  <div className="text-sm text-foreground truncate">vijayjosephchinni367@gmail.com</div>
                 </div>
               </a>
               <a href="tel:8367592895" className="flex items-center gap-3 group">
@@ -129,7 +129,7 @@ const Contact = () => {
           {/* Form */}
           <form
             onSubmit={onSubmit}
-            className="contact-form lg:col-span-3 glass-strong border-glow rounded-3xl p-6 md:p-10 space-y-4"
+            className="contact-form lg:col-span-3 glass-strong border-glow rounded-3xl p-5 sm:p-6 md:p-10 space-y-4"
           >
             <div className="grid sm:grid-cols-2 gap-4">
               <Field name="name" label="Name" placeholder="Your name" />
