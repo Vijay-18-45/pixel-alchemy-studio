@@ -288,15 +288,15 @@
 
 @layer utilities {
   .float-slow {
-    animation: float 8s ease-in-out infinite;
+    animation: float 4s ease-in-out infinite;
     will-change: transform;
   }
   .float-slower {
-    animation: float 12s ease-in-out infinite;
+    animation: float 6s ease-in-out infinite;
     will-change: transform;
   }
   .pulse-glow {
-    animation: pulse-glow 3s ease-in-out infinite;
+    animation: pulse-glow 1.5s ease-in-out infinite;
   }
 
   @keyframes float {
