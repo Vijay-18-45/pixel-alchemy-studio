@@ -104,7 +104,7 @@ const Projects = () => {
                     e.preventDefault();
                     document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
                   }}
-                  className="mt-3 inline-flex items-center justify-center gap-2 rounded-full bg-white/5 hover:bg-gradient-primary hover:text-primary-foreground px-4 py-2 text-xs font-medium transition-all"
+                  className="btn-ghost-premium mt-3"
                 >
                   Get Similar Website
                 </a>
