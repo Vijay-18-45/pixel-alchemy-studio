@@ -139,25 +139,25 @@ const Hero = () => {
           convert visitors into customers.
         </p>
 
-        <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
+        <div className="mt-6 flex flex-col sm:flex-row items-center justify-center gap-5">
           <a
             href="#contact"
             onClick={(e) => {
               e.preventDefault();
               document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
             }}
-            className="hero-cta btn-premium btn-lg w-full sm:w-auto"
+            className="hero-cta btn-premium btn-xl w-full sm:w-auto"
           >
-            <RocketLaunch size={20} weight="fill" />
+            <RocketLaunch size={24} weight="fill" />
             Get Your Website
           </a>
           <a
             href="https://wa.me/918367592895"
             target="_blank"
             rel="noopener noreferrer"
-            className="hero-cta btn-ghost-premium btn-lg w-full sm:w-auto"
+            className="hero-cta btn-ghost-premium btn-xl w-full sm:w-auto"
           >
-            <ChatCircleDots size={20} weight="fill" />
+            <ChatCircleDots size={24} weight="fill" />
             DM Us
           </a>
         </div>

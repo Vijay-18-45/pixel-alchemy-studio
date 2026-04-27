@@ -360,6 +360,7 @@
   /* Size modifiers for premium buttons */
   .btn-lg { padding: 1rem 2rem; font-size: 0.95rem; }
   .btn-sm { padding: 0.55rem 1.15rem; font-size: 0.8rem; }
+  .btn-xl { padding: 1.35rem 2.75rem; font-size: 1.1rem; font-weight: 600; letter-spacing: 0.01em; }
 
   @media (prefers-reduced-motion: reduce) {
     .btn-premium::before,
