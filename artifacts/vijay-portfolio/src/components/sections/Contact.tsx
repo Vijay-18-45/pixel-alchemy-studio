@@ -14,6 +14,11 @@ import { toast } from "@/hooks/use-toast";
 
 gsap.registerPlugin(ScrollTrigger);
 
+const SHEETS_ENDPOINT =
+  "https://script.google.com/macros/s/AKfycbwyEn2uBNWxreMa73nb0usearsmrAyE8aDDTJfZzpol9NTqtF5IjhMSjXrZ95qBDD8/exec";
+
+const MOBILE_PATTERN = "^[+]?[0-9][0-9\\s\\-()]{6,18}$";
+
 const Contact = () => {
   const root = useRef<HTMLDivElement>(null);
   const [submitting, setSubmitting] = useState(false);
@@ -49,17 +54,50 @@ const Contact = () => {
     return () => ctx.revert();
   }, []);
 
-  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (submitting) return;
+
+    const form = e.currentTarget;
+    const data = new FormData(form);
+    const payload = {
+      name: String(data.get("name") ?? "").trim(),
+      business: String(data.get("business") ?? "").trim(),
+      email: String(data.get("email") ?? "").trim(),
+      mobile: String(data.get("mobile") ?? "").trim(),
+      message: String(data.get("message") ?? "").trim(),
+    };
+
     setSubmitting(true);
-    setTimeout(() => {
-      toast({
-        title: "Message sent ✨",
-        description: "Thanks! Vijay will get back to you within 24 hours.",
+    try {
+      // Apps Script Web Apps reject CORS preflights, so we send JSON
+      // as text/plain to keep the request "simple" and skip OPTIONS.
+      const res = await fetch(SHEETS_ENDPOINT, {
+        method: "POST",
+        headers: { "Content-Type": "text/plain;charset=utf-8" },
+        body: JSON.stringify(payload),
+        redirect: "follow",
       });
-      (e.target as HTMLFormElement).reset();
+
+      if (!res.ok) {
+        throw new Error(`Request failed with status ${res.status}`);
+      }
+
+      toast({
+        title: "Message sent successfully",
+        description: "I'll get back to you soon.",
+      });
+      form.reset();
+    } catch (err) {
+      console.error("Contact form submission failed", err);
+      toast({
+        title: "Something went wrong",
+        description: "Please try again.",
+        variant: "destructive",
+      });
+    } finally {
       setSubmitting(false);
-    }, 800);
+    }
   };
 
   return (
@@ -140,8 +178,23 @@ const Contact = () => {
               <Field name="business" label="Business Name" placeholder="Your business" />
             </div>
             <div className="grid sm:grid-cols-2 gap-4">
-              <Field name="email" label="Email" type="email" placeholder="you@email.com" />
-              <Field name="phone" label="Mobile Number" type="tel" placeholder="+91 ..." />
+              <Field
+                name="email"
+                label="Email"
+                type="email"
+                autoComplete="email"
+                placeholder="you@email.com"
+              />
+              <Field
+                name="mobile"
+                label="Mobile Number"
+                type="tel"
+                autoComplete="tel"
+                inputMode="tel"
+                placeholder="+91 98765 43210"
+                pattern={MOBILE_PATTERN}
+                title="Enter a valid mobile number (7–18 digits, may start with +)"
+              />
             </div>
             <div className="contact-input">
               <label className="block text-xs font-medium text-muted-foreground mb-1.5">
@@ -187,19 +240,34 @@ const Field = ({
   label,
   type = "text",
   placeholder,
+  pattern,
+  title,
+  autoComplete,
+  inputMode,
 }: {
   name: string;
   label: string;
   type?: string;
   placeholder?: string;
+  pattern?: string;
+  title?: string;
+  autoComplete?: string;
+  inputMode?: "text" | "tel" | "email" | "url" | "numeric" | "decimal" | "search" | "none";
 }) => (
   <div className="contact-input">
-    <label className="block text-xs font-medium text-muted-foreground mb-1.5">{label}</label>
+    <label htmlFor={`contact-${name}`} className="block text-xs font-medium text-muted-foreground mb-1.5">
+      {label}
+    </label>
     <input
+      id={`contact-${name}`}
       name={name}
       type={type}
       required
       placeholder={placeholder}
+      pattern={pattern}
+      title={title}
+      autoComplete={autoComplete}
+      inputMode={inputMode}
       className="w-full rounded-2xl bg-input/60 border border-border focus:border-primary/60 focus:outline-none focus:ring-2 focus:ring-primary/30 px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/60 transition-all"
     />
   </div>
