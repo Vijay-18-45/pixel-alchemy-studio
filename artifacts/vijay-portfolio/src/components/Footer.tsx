@@ -65,9 +65,9 @@ const Footer = () => {
             </p>
             <div className="flex gap-2">
               {[
-                { Icon: GithubLogo, href: "https://github.com", label: "GitHub" },
-                { Icon: LinkedinLogo, href: "https://linkedin.com", label: "LinkedIn" },
-                { Icon: InstagramLogo, href: "https://instagram.com", label: "Instagram" },
+                { Icon: GithubLogo, href: "https://github.com/Vijay-18-45", label: "GitHub" },
+                { Icon: LinkedinLogo, href: "https://www.linkedin.com/in/vijay-bhemavarapu", label: "LinkedIn" },
+                { Icon: InstagramLogo, href: "https://www.instagram.com/lowkey_core_18?igsh=azVtbXI4aTJxbnZq", label: "Instagram" },
                 { Icon: WhatsappLogo, href: "https://wa.me/918367592895", label: "WhatsApp" },
               ].map(({ Icon, href, label }) => (
                 <a
@@ -76,9 +76,17 @@ const Footer = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={label}
-                  className="inline-flex h-9 w-9 items-center justify-center rounded-xl text-muted-foreground hover:text-primary hover:bg-white/5 transition-colors"
+                  className="group relative inline-flex h-9 w-9 items-center justify-center rounded-xl text-muted-foreground transition-all duration-500 ease-out hover:-translate-y-0.5 hover:scale-110 hover:text-primary hover:shadow-[0_0_24px_hsl(var(--primary)/0.55)]"
                 >
-                  <Icon size={16} weight="duotone" />
+                  <span
+                    aria-hidden
+                    className="pointer-events-none absolute inset-0 rounded-xl bg-gradient-aurora opacity-0 blur-md transition-opacity duration-500 group-hover:opacity-60"
+                  />
+                  <span
+                    aria-hidden
+                    className="pointer-events-none absolute inset-0 rounded-xl bg-white/0 ring-0 ring-primary/0 transition-all duration-500 group-hover:bg-white/5 group-hover:ring-1 group-hover:ring-primary/40"
+                  />
+                  <Icon size={16} weight="duotone" className="relative z-10 transition-transform duration-500 group-hover:scale-110" />
                 </a>
               ))}
             </div>
